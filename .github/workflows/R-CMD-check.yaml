@@ -111,6 +111,16 @@ jobs:
         with:
           extra-packages: rcmdcheck
 
+      - name: Install wayland
+        if: ${{ matrix.config.clip_type == 'wayland' }}
+        run: |
+          sudo apt-get purge x11-*
+          sudo apt-get install meson
+          git clone https://github.com/bugaevc/wl-clipboard.git
+          cd wl-clipboard
+          meson build
+          sudo ninja install
+
       - uses: r-lib/actions/check-r-package@v1
         if: ${{ matrix.config.clip_type != 'nodisplay' }}
         env:
