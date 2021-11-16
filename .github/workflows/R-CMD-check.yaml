@@ -119,6 +119,7 @@ jobs:
           git clone https://github.com/bugaevc/wl-clipboard.git
           cd wl-clipboard
           meson build
+          ninja
           sudo ninja install
 
       - uses: r-lib/actions/check-r-package@v1
