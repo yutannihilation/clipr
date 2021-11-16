@@ -107,7 +107,7 @@ jobs:
           git clone https://github.com/bugaevc/wl-clipboard.git
           cd wl-clipboard
           meson build
-          ninja
+          cd build/
           sudo ninja install
 
       - uses: r-lib/actions/setup-pandoc@v1
