@@ -115,7 +115,7 @@ jobs:
         if: ${{ matrix.config.clip_type == 'wayland' }}
         run: |
           sudo apt-get purge x11-*
-          sudo apt-get install meson
+          sudo apt-get install meson libwayland0
           git clone https://github.com/bugaevc/wl-clipboard.git
           cd wl-clipboard
           meson build
