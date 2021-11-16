@@ -81,7 +81,7 @@ jobs:
           use-public-rspm: true
 
       - name: Install and run XVFB
-        if: ${{ matrix.config.clip_type != '' && matrix.config.clip_type != 'nodisplay' }}
+        if: ${{ matrix.config.clip_type == 'xclip' || matrix.config.clip_type == 'xsel' }}
         run: |
           sudo apt-get install -y xvfb
           sudo /usr/bin/Xvfb :99.0 -screen 0 1280x1024x24 &
@@ -115,7 +115,7 @@ jobs:
         if: ${{ matrix.config.clip_type == 'wayland' }}
         run: |
           sudo apt-get purge x11-*
-          sudo apt-get install meson libwayland0
+          sudo apt-get install meson libwayland-client0
           git clone https://github.com/bugaevc/wl-clipboard.git
           cd wl-clipboard
           meson build
