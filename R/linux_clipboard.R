@@ -44,8 +44,9 @@ notify_no_display <- function() {
 
 # Helper function to read from the X11 clipboard
 #
-# Requires the utility 'xclip' or 'xsel'. This function will stop with an error
-# if neither is found. Adapted from:
+# Requires the utility 'xclip' or 'xsel' when using X11, or 'wl-paste' when
+# using Wayland. This function will stop with an error if neither is found.
+# Adapted from:
 # https://github.com/mrdwab/overflow-mrdwab/blob/master/R/readClip.R and:
 # https://github.com/jennybc/reprex/blob/master/R/clipboard.R
 X11_read_clip <- function() {
@@ -66,9 +67,9 @@ X11_read_clip <- function() {
 
 # Helper function to write to the X11 clipboard
 #
-# Requires the utility 'xclip' or 'xsel'. This function will stop with an error
-# if neither is found. Adapted from
-# https://github.com/mrdwab/overflow-mrdwab/blob/master/R/writeClip.R
+# Requires the utility 'xclip' or 'xsel' when using X11, or 'wl-copy' when using
+# Wayland. This function will stop with an error if neither is found. Adapted
+# from https://github.com/mrdwab/overflow-mrdwab/blob/master/R/writeClip.R
 #
 # Targets "primary" and "clipboard" clipboards if using xclip, see:
 # http://unix.stackexchange.com/a/69134/89254
