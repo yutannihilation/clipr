@@ -6,8 +6,15 @@ has_util <- function(util_test) {
   if (nzchar(Sys.which(util_test[1]))) {
     # If utility is accessible, check that DISPLAY can be opened.
     try_res <- tryCatch(system2(util_test[1], util_test[-1], stdout = TRUE, stderr = TRUE),
-                        error = function(c) FALSE,
-                        warning = function(c) FALSE)
+                        error = function(c) {
+                          print(c)
+                          return(FALSE)
+                        },
+                        warning = function(c) {
+                          print(c)
+                          return(FALSE)
+                        }
+    )
 
     # In the case of an error/warning on trying the function, then the util is
     # not available
