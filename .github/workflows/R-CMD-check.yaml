@@ -110,9 +110,12 @@ jobs:
           meson build
           cd build/
           sudo ninja install
+          mkdir $GITHUB_WORKSPACE/../xdg
           wl-copy --primary
           wl-paste --primary
           cd $GITHUB_WORKSPACE
+        env:
+          XDG_DIR: $GITHUB_WORKSPACE/../xdg
 
       - uses: r-lib/actions/setup-pandoc@v1
 
