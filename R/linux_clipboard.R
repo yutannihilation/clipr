@@ -64,7 +64,7 @@ X11_read_clip <- function() {
     con <- pipe("xclip -o -selection clipboard")
   } else if (has_xsel()) {
     con <- pipe("xsel --clipboard --output")
-  } else if (has_wlpaste()) {
+  } else if (has_wl_paste()) {
     con <- pipe("wl-paste")
   } else {
     notify_no_cb()
