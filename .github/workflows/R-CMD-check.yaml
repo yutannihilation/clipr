@@ -115,7 +115,8 @@ jobs:
           wl-paste --primary
           cd $GITHUB_WORKSPACE
         env:
-          XDG_DIR: $GITHUB_WORKSPACE/../xdg
+          XDG_RUNTIME_DIR: $GITHUB_WORKSPACE/../xdg
+          DISPLAY: ':99.0'
 
       - uses: r-lib/actions/setup-pandoc@v1
 
