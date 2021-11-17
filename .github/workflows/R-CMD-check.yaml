@@ -117,6 +117,7 @@ jobs:
         env:
           XDG_RUNTIME_DIR: $GITHUB_WORKSPACE/../xdg
           DISPLAY: ':99.0'
+          WLR_BACKENDS: headless
 
       - uses: r-lib/actions/setup-pandoc@v1
 
