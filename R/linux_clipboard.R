@@ -27,6 +27,9 @@ has_xclip <- function() has_util(c("xclip", "-o", "-selection", "clipboard"))
 # Determine if system has 'xsel' installed
 has_xsel <- function() has_util(c("xsel", "--clipboard", "--output"))
 
+# Determine if system has both 'wl-paste' and 'wl-copy' installed
+has_wl_clipboard <- function() has_wl_paste() & has_wl_copy()
+
 # Determine if system has 'wl-paste' installed
 has_wl_paste <- function() has_util(c("wl-paste", "--primary"))
 

@@ -16,6 +16,8 @@ test_that("clipr_available fails when DISPLAY is not configured; succeeds when i
       expect_true(is_clipr_available)
     if (identical(Sys.getenv("CLIP_TYPE"), "xsel"))
       expect_true(is_clipr_available)
+    if (identical(Sys.getenv("CLIP_TYPE"), "wayland"))
+      expect_true(is_clipr_available)
   }
 })
 
@@ -26,6 +28,8 @@ test_that("dr_clipr provides informative messages", {
     if (identical(Sys.getenv("CLIP_TYPE"), "xclip"))
       expect_message(dr_clipr(), msg_clipr_available(), fixed = TRUE)
     if (identical(Sys.getenv("CLIP_TYPE"), "xsel"))
+      expect_message(dr_clipr(), msg_clipr_available(), fixed = TRUE)
+    if (identical(Sys.getenv("CLIP_TYPE"), "wayland"))
       expect_message(dr_clipr(), msg_clipr_available(), fixed = TRUE)
     if (identical(Sys.getenv("CLIP_TYPE"), "none"))
       expect_message(dr_clipr(), msg_no_clipboard(), fixed = TRUE)
