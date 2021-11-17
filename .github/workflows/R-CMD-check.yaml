@@ -104,11 +104,13 @@ jobs:
         run: |
           sudo apt-get purge x11-*
           sudo apt-get install meson libwayland-dev
+          cd $GITHUB_WORKSPACE/..
           git clone https://github.com/bugaevc/wl-clipboard.git
           cd wl-clipboard
           meson build
           cd build/
           sudo ninja install
+          cd $GITHUB_WORKSPACE
 
       - uses: r-lib/actions/setup-pandoc@v1
 
