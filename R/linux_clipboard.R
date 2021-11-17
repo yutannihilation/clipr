@@ -27,6 +27,12 @@ has_xclip <- function() has_util(c("xclip", "-o", "-selection", "clipboard"))
 # Determine if system has 'xsel' installed
 has_xsel <- function() has_util(c("xsel", "--clipboard", "--output"))
 
+# Determine if system has 'wl-paste' installed
+has_wl_paste <- function() has_util(c("wl-paste", "--primary"))
+
+# Determine if system has 'wl-paste' installed
+has_wl_copy <- function() has_util(c("wl-copy", "--primary"))
+
 # Stop read/write and return an error of missing clipboard software.
 notify_no_cb <- function() {
   stop(msg_no_clipboard(), call. = FALSE)
@@ -38,8 +44,9 @@ notify_no_display <- function() {
 
 # Helper function to read from the X11 clipboard
 #
-# Requires the utility 'xclip' or 'xsel'. This function will stop with an error
-# if neither is found. Adapted from:
+# Requires the utility 'xclip' or 'xsel' when using X11, or 'wl-paste' when
+# using Wayland. This function will stop with an error if neither is found.
+# Adapted from:
 # https://github.com/mrdwab/overflow-mrdwab/blob/master/R/readClip.R and:
 # https://github.com/jennybc/reprex/blob/master/R/clipboard.R
 X11_read_clip <- function() {
@@ -47,6 +54,8 @@ X11_read_clip <- function() {
     con <- pipe("xclip -o -selection clipboard")
   } else if (has_xsel()) {
     con <- pipe("xsel --clipboard --output")
+  } else if (has_wlpaste()) {
+    con <- pipe("wl-paste")
   } else {
     notify_no_cb()
   }
@@ -58,9 +67,9 @@ X11_read_clip <- function() {
 
 # Helper function to write to the X11 clipboard
 #
-# Requires the utility 'xclip' or 'xsel'. This function will stop with an error
-# if neither is found. Adapted from
-# https://github.com/mrdwab/overflow-mrdwab/blob/master/R/writeClip.R
+# Requires the utility 'xclip' or 'xsel' when using X11, or 'wl-copy' when using
+# Wayland. This function will stop with an error if neither is found. Adapted
+# from https://github.com/mrdwab/overflow-mrdwab/blob/master/R/writeClip.R
 #
 # Targets "primary" and "clipboard" clipboards if using xclip, see:
 # http://unix.stackexchange.com/a/69134/89254
@@ -69,6 +78,8 @@ X11_write_clip <- function(content, object_type, breaks, eos, return_new, ...) {
     con <- pipe("xclip -i -sel p -f | xclip -i -sel c", "w")
   } else if (has_xsel()) {
     con <- pipe("xsel --clipboard --input", "w")
+  } else if (has_wl_copy()) {
+    con <- pipe("wl-copy", "w")
   } else {
     notify_no_cb()
   }
