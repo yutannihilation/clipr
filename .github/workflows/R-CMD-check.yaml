@@ -110,6 +110,8 @@ jobs:
           meson build
           cd build/
           sudo ninja install
+          wl-copy --primary
+          wl-paste --primary
           cd $GITHUB_WORKSPACE
 
       - uses: r-lib/actions/setup-pandoc@v1
