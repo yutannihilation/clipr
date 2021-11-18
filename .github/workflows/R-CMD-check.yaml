@@ -104,6 +104,8 @@ jobs:
         run: |
           export XDG_RUNTIME_DIR=$GITHUB_WORKSPACE/../xdg
           mkdir $XDG_RUNTIME_DIR
+          chown $USER $XDG_RUNTIME_DIR
+          chmod 0700 $XDG_RUNTIME_DIR
           sudo apt-get purge x11-*
           sudo apt-get install weston meson libwayland-dev
           weston -b headless.backend.so
