@@ -112,7 +112,7 @@ jobs:
           cd build/
           sudo ninja install
           wl-copy --primary
-          ls -la $GITHUB_WORKSPACE/../xdg
+          ls -la $XDG_RUNTIME_DIR
           wl-paste --primary
           cd $GITHUB_WORKSPACE
         env:
