@@ -102,10 +102,9 @@ jobs:
       - name: Install wayland
         if: ${{ matrix.config.clip_type == 'wayland' }}
         run: |
-          echo $XDG_SESSION_TYPE
-          mkdir $GITHUB_WORKSPACE/../xdg
+          export XDG_RUNTIME_DIR=$GITHUB_WORKSPACE/../xdg
           sudo apt-get purge x11-*
-          sudo apt-get install meson libwayland-dev
+          sudo apt-get install weston meson libwayland-dev
           cd $GITHUB_WORKSPACE/..
           git clone https://github.com/bugaevc/wl-clipboard.git
           cd wl-clipboard
@@ -117,7 +116,6 @@ jobs:
           wl-paste --primary
           cd $GITHUB_WORKSPACE
         env:
-          XDG_RUNTIME_DIR: $GITHUB_WORKSPACE/../xdg
           DISPLAY: ':99.0'
           WLR_BACKENDS: headless
           WLR_LIBINPUT_NO_DEVICES: 1
