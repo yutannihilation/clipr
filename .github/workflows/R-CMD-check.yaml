@@ -108,7 +108,8 @@ jobs:
           chmod 0700 $XDG_RUNTIME_DIR
           sudo apt-get purge x11-*
           sudo apt-get install weston meson libwayland-dev
-          echo require-input=false > ~/weston.ini
+          echo [core] > ~/weston.ini
+          echo require-input=false >> ~/weston.ini
           weston --config ~/weston.ini --backend headless-backend.so
           cd $GITHUB_WORKSPACE/..
           git clone https://github.com/bugaevc/wl-clipboard.git
