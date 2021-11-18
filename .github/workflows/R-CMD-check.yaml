@@ -105,6 +105,7 @@ jobs:
           export XDG_RUNTIME_DIR=$GITHUB_WORKSPACE/../xdg
           sudo apt-get purge x11-*
           sudo apt-get install weston meson libwayland-dev
+          weston -b headless.backend.so
           cd $GITHUB_WORKSPACE/..
           git clone https://github.com/bugaevc/wl-clipboard.git
           cd wl-clipboard
