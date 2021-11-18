@@ -117,8 +117,7 @@ jobs:
         env:
           XDG_RUNTIME_DIR: $GITHUB_WORKSPACE/../xdg
           DISPLAY: ':99.0'
-          WLR_BACKENDS: headless
-          WLR_LIBINPUT_NO_DEVICES: 1
+          WAYLAND_DISPLAY: wayland-1
 
       - uses: r-lib/actions/setup-pandoc@v1
 
@@ -138,6 +137,7 @@ jobs:
           ALLOW_CLIP: ${{ matrix.config.allow_clip }}
           CLIP_TYPE: ${{ matrix.config.clip_type }}
           DISPLAY: ':99.0'
+          WAYLAND_DISPLAY: wayland-1
 
       - uses: r-lib/actions/check-r-package@v1
         if: ${{ matrix.config.clip_type == 'nodisplay' }}
