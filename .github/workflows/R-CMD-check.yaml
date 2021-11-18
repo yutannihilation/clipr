@@ -102,6 +102,7 @@ jobs:
       - name: Install wayland
         if: ${{ matrix.config.clip_type == 'wayland' }}
         run: |
+          mkdir $XDG_RUNTIME_DIR
           sudo apt-get purge x11-*
           sudo apt-get install meson libwayland-dev
           cd $GITHUB_WORKSPACE/..
@@ -110,8 +111,8 @@ jobs:
           meson build
           cd build/
           sudo ninja install
-          mkdir $GITHUB_WORKSPACE/../xdg
           wl-copy --primary
+          ls -la $XDG_RUNTIME_DIR
           wl-paste --primary
           cd $GITHUB_WORKSPACE
         env:
