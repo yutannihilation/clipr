@@ -103,6 +103,7 @@ jobs:
         if: ${{ matrix.config.clip_type == 'wayland' }}
         run: |
           export XDG_RUNTIME_DIR=$GITHUB_WORKSPACE/../xdg
+          mkdir $XDG_RUNTIME_DIR
           sudo apt-get purge x11-*
           sudo apt-get install weston meson libwayland-dev
           weston -b headless.backend.so
