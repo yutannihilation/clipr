@@ -111,7 +111,7 @@ jobs:
           echo backend=headless-backend.so >> ~/weston.ini
           sudo apt-get purge x11-*
           sudo apt-get install weston meson libwayland-dev
-          weston-launch -- --config=~/weston.ini --tty /dev/tty1 &
+          weston-launch --tty /dev/tty1 -- --config=~/weston.ini &
           cd $GITHUB_WORKSPACE/..
           git clone https://github.com/bugaevc/wl-clipboard.git
           cd wl-clipboard
