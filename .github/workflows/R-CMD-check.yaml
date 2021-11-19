@@ -109,6 +109,8 @@ jobs:
           echo [core] > ~/weston.ini
           echo require-input=false >> ~/weston.ini
           echo backend=headless-backend.so >> ~/weston.ini
+          chmod 0700 ~/weston.ini
+          cat ~/weston.ini
           sudo apt-get purge x11-*
           sudo apt-get install weston meson libwayland-dev
           sudo weston-launch --tty /dev/tty2 --user root -- --config=~/weston.ini &
