@@ -128,7 +128,6 @@ jobs:
         env:
           WESTON_INI: /home/runner/work/clipr/weston.ini
           XDG_RUNTIME_DIR: /home/runner/work/clipr/xdg
-          DISPLAY: ':99.0'
           WLR_BACKENDS: headless
           WLR_LIBINPUT_NO_DEVICES: 1
           WAYLAND_DISPLAY: wayland-1
