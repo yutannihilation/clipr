@@ -125,6 +125,7 @@ jobs:
           WLR_BACKENDS: headless
           WLR_LIBINPUT_NO_DEVICES: 1
           WAYLAND_DISPLAY: wayland-1
+          GTK_USE_PORTAL: 0
 
       - uses: r-lib/actions/setup-pandoc@v1
 
