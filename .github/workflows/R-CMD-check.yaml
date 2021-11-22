@@ -102,7 +102,6 @@ jobs:
       - name: Install wayland
         if: ${{ matrix.config.clip_type == 'wayland' }}
         run: |
-          export XDG_RUNTIME_DIR=$GITHUB_WORKSPACE/../xdg
           mkdir $XDG_RUNTIME_DIR
           chown $USER $XDG_RUNTIME_DIR
           chmod 0700 $XDG_RUNTIME_DIR
@@ -127,6 +126,7 @@ jobs:
           wl-paste --primary
           cd $GITHUB_WORKSPACE
         env:
+          XDG_RUNTIME_DIR: /home/runner/work/clipr/xdg
           DISPLAY: ':99.0'
           WLR_BACKENDS: headless
           WLR_LIBINPUT_NO_DEVICES: 1
