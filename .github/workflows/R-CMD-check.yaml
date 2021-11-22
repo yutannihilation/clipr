@@ -111,6 +111,7 @@ jobs:
           echo backend=headless-backend.so >> $GITHUB_WORKSPACE/../weston.ini
           chmod 0700 $GITHUB_WORKSPACE/../weston.ini
           cat $GITHUB_WORKSPACE/../weston.ini
+          sudo apt-get update
           sudo apt-get purge x11-*
           sudo apt-get install weston meson libwayland-dev
           sudo weston-launch -- --config=$GITHUB_WORKSPACE/../weston.ini &
