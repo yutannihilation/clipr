@@ -105,7 +105,6 @@ jobs:
           mkdir $XDG_RUNTIME_DIR
           chown $USER $XDG_RUNTIME_DIR
           chmod 0700 $XDG_RUNTIME_DIR
-          echo [core] > $WESTON_INI
           sudo apt-get update
           sudo apt-get purge x11-*
           sudo apt-get install sway meson libwayland-dev
