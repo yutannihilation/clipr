@@ -113,7 +113,7 @@ jobs:
           cat $GITHUB_WORKSPACE/../weston.ini
           sudo apt-get purge x11-*
           sudo apt-get install weston meson libwayland-dev
-          sudo weston-launch --tty /dev/tty2 --user root -- --config=$GITHUB_WORKSPACE/../weston.ini &
+          sudo weston-launch -- --config=$GITHUB_WORKSPACE/../weston.ini &
           cd $GITHUB_WORKSPACE/..
           git clone https://github.com/bugaevc/wl-clipboard.git
           cd wl-clipboard
