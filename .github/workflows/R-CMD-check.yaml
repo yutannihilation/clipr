@@ -114,6 +114,8 @@ jobs:
           sudo apt-get update
           sudo apt-get purge x11-*
           sudo apt-get install weston meson libwayland-dev
+          echo $XDG_RUNTIME_DIR
+          ls -la $XDG_RUNTIME_DIR
           sudo weston --config=$GITHUB_WORKSPACE/../weston.ini &
           cd $GITHUB_WORKSPACE/..
           git clone https://github.com/bugaevc/wl-clipboard.git
@@ -122,7 +124,6 @@ jobs:
           cd build/
           sudo ninja install
           wl-copy --primary
-          ls -la $XDG_RUNTIME_DIR
           wl-paste --primary
           cd $GITHUB_WORKSPACE
         env:
