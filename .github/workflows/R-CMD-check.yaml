@@ -106,11 +106,11 @@ jobs:
           chown $USER $XDG_RUNTIME_DIR
           chmod 0700 $XDG_RUNTIME_DIR
           sudo apt-get update
-          # sudo apt-get purge x11-*
+          sudo apt-get purge x11-*
           sudo apt-get install sway meson libwayland-dev
           echo $XDG_RUNTIME_DIR
           ls -la $XDG_RUNTIME_DIR
-          nohup dbus-run-session sway -d -V &
+          dbus-run-session sway -d -V
           cd $GITHUB_WORKSPACE/..
           git clone https://github.com/bugaevc/wl-clipboard.git
           cd wl-clipboard
