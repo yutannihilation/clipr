@@ -110,7 +110,7 @@ jobs:
           sudo apt-get install sway meson libwayland-dev
           echo $XDG_RUNTIME_DIR
           ls -la $XDG_RUNTIME_DIR
-          dbus-run-session sway -d -V
+          dbus-run-session sway -d -V 2>/dev/null &&
           cd $GITHUB_WORKSPACE/..
           git clone https://github.com/bugaevc/wl-clipboard.git
           cd wl-clipboard
